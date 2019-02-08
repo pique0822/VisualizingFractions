@@ -8,6 +8,7 @@ function sleep(milliseconds) {
 }
 
 function draw_fraction(num,denom){
+
   ctx.lineWidth = 5;
   ctx.strokeStyle = "#000000";
 
@@ -17,6 +18,10 @@ function draw_fraction(num,denom){
 	ctx.fillRect(0, 0, canvas.width, canvas.height);
 
   int = Math.floor(num/denom);
+  if(denom == 0)
+  {
+    int = 0;
+  }
 
 
   ctx.fillStyle = red;

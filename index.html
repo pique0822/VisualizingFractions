@@ -1,0 +1,43 @@
+<html>
+	<head>
+		<title>Visualizing Fractions</title>
+		<link rel="icon" href="icon.png">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+		<link rel="stylesheet" href="styles.css">
+	</head>
+	<body>
+		<div class="full">
+			<div class="row top">
+				<div class="title">
+					<h1>Visualizing Fractions</h1>
+				</div>
+			</div>
+			<div class="whatsthis">What is this?</div>
+			<div class="dropdown hidden">
+				<p>This visualization is to show how numerators and denominators impact "pizza slices". One could select any numerator and any denominator and see how increasing the denominator changes the number of slices. Notice that the red shading is meant to show that it is a part of the fraction.
+				 <br><br>
+				 If you have any suggestions or questions about what I did, feel free to email me at <a>drmiguel@mit.edu</a>.
+				</p>
+			</div>
+			<div class="row title">
+					<div class="form-group form-inline">
+						<label> Visualizing </label>
+						<input type="number"class="form-control inputs" id="input_numerator" placeholder="Numerator" value=1>
+						<label> / </label>
+						<input type="number"class="form-control inputs" id="input_denominator" value=4 placeholder="Denominator">
+					</div>
+					<div class="row">
+						<div class="col-sm-12 container" id="canvasContainer">
+						</div>
+					</div>
+			</div>
+			<div class="row title">
+				<div class="form-group form-inline">
+					<label> Value: </label>
+					<input type="number"class="form-control inputs" id="fraction_value" placeholder="Numerator" value=0.25>
+			</div>
+		</div>
+		<script src="main.js"></script>
+	</body>
+</html>

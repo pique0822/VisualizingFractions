@@ -17,6 +17,8 @@ function draw_fraction(num,denom){
 	ctx.fillStyle = background;
 	ctx.fillRect(0, 0, canvas.width, canvas.height);
 
+
+
   int = Math.floor(num/denom);
   if(denom == 0)
   {
@@ -41,16 +43,21 @@ function draw_fraction(num,denom){
     ctx.stroke();
     return;
   }
+  // This is if num > denom
     for(var i = 1; i <= int; i++)
     {
+      // Outer circle
       ctx.beginPath();
       ctx.arc(center_x*i,center_y,r,0,2*Math.PI);
       ctx.stroke();
 
+      // Outer circle
       ctx.beginPath();
+      ctx.fillStyle = red;
       ctx.arc(center_x*i,center_y,r,0,2*Math.PI);
       ctx.fill();
 
+      // Draws the black lines for the cirlce
       for(var j = 0; j < denom; j++)
       {
           ctx.beginPath();
@@ -59,9 +66,25 @@ function draw_fraction(num,denom){
           // console.log(angle);
           ctx.lineTo(center_x*i+r*Math.cos(angle),center_y-r*Math.sin(angle));
           ctx.stroke();
+
+          font = 40-(int)*2
+          inbetween_angle = (2*j-1)/2*2*Math.PI/(denom);
+          topx = center_x*(i)+r/2*Math.cos(inbetween_angle)-font/3
+          topy = center_y-2*r/3*Math.sin(inbetween_angle)
+
+
+          ctx.fillStyle = "#000000";
+          ctx.font = font+"px Georgia";
+          ctx.fillText(1, topx, topy);
+          ctx.fillText("_",topx-font/20,topy+font/20);
+          ctx.fillText(denom, topx, topy+font);
       }
     }
+    // Draws the actual fraction
     if(num/denom == int){
+
+      // Draws the filled in circle
+      ctx.fillStyle = red;
       ctx.beginPath();
       angle = 2*Math.PI/(denom/num);
       ctx.moveTo(center_x*(int),center_y);
@@ -72,18 +95,33 @@ function draw_fraction(num,denom){
 
       for(var i = 0; i < denom; i++)
       {
+
           ctx.beginPath();
           ctx.moveTo(center_x*(int),center_y);
           angle = i*2*Math.PI/(denom);
-          console.log(angle);
           ctx.lineTo(center_x*(int)+r*Math.cos(angle),center_y-r*Math.sin(angle));
           ctx.stroke();
+
+          font = 40-(int)*2
+          inbetween_angle = (2*i-1)/2*2*Math.PI/(denom);
+          topx = center_x*(int)+r/2*Math.cos(inbetween_angle)-font/3
+          topy = center_y-2*r/3*Math.sin(inbetween_angle)
+
+
+          ctx.fillStyle = "#000000";
+          ctx.font = font+"px Georgia";
+          ctx.fillText(1, topx, topy);
+          ctx.fillText("_",topx-font/20,topy+font/20);
+          ctx.fillText(denom, topx, topy+font);
       }
 
+      // Draws the outer circle
       ctx.beginPath();
       ctx.arc(center_x*(int),center_y,r,0,2*Math.PI);
       ctx.stroke();
     } else {
+
+      ctx.fillStyle = red;
       ctx.beginPath();
       angle = 2*Math.PI/(denom/(num - int*denom));
       ctx.moveTo(center_x*(int+1),center_y);
@@ -97,11 +135,23 @@ function draw_fraction(num,denom){
           ctx.beginPath();
           ctx.moveTo(center_x*(int+1),center_y);
           angle = i*2*Math.PI/(denom);
-          console.log(angle);
           ctx.lineTo(center_x*(int+1)+r*Math.cos(angle),center_y-r*Math.sin(angle));
           ctx.stroke();
+
+          font = 40-(int)*2
+          inbetween_angle = (2*i-1)/2*2*Math.PI/(denom);
+          topx = center_x*(int+1)+r/2*Math.cos(inbetween_angle)-font/3
+          topy = center_y-2*r/3*Math.sin(inbetween_angle)
+
+
+          ctx.fillStyle = "#000000";
+          ctx.font = font+"px Georgia";
+          ctx.fillText(1, topx, topy);
+          ctx.fillText("_",topx-font/20,topy+font/20);
+          ctx.fillText(denom, topx, topy+font);
       }
 
+      // outer Circle
       ctx.beginPath();
       ctx.arc(center_x*(int+1),center_y,r,0,2*Math.PI);
       ctx.stroke();
